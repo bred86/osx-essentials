@@ -1,0 +1,14 @@
+- name: download brew script
+  get_url:
+    url: https://raw.githubusercontent.com/Homebrew/install/master/install.sh
+    dest: /tmp/brew-install.sh
+    mode: 0755
+
+- name: install brew
+  expect:
+    command: '/bin/bash -c /tmp/brew-install.sh'
+    responses:
+      (.*)Press RETURN to continue or any other key to abort(.*): ''
+      (.*)Password(.*): '{{ password }}' 
+    timeout: null
+  become: no

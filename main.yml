@@ -1,0 +1,27 @@
+# ################################################
+# this is one got to be first
+#- import_playbook: playbooks/system/setup.yml
+# ################################################
+- import_playbook: playbooks/dev/00-git.yml
+- import_playbook: playbooks/dev/01-virtualbox.yml
+- import_playbook: playbooks/dev/02-vagrant.yml
+- import_playbook: playbooks/dev/03-packer.yml
+
+- import_playbook: playbooks/internet-browser/chrome.yml
+- import_playbook: playbooks/internet-browser/firefox.yml
+
+- import_playbook: playbooks/messenger/slack.yml
+- import_playbook: playbooks/messenger/telegram.yml
+- import_playbook: playbooks/messenger/whatsapp.yml
+- import_playbook: playbooks/messenger/zoom.yml
+
+- import_playbook: playbooks/system/1password.yml
+- import_playbook: playbooks/system/evernote.yml
+- import_playbook: playbooks/system/iterm.yml
+- import_playbook: playbooks/system/ssh.yml
+- import_playbook: playbooks/system/zsh.yml
+
+- import_playbook: playbooks/text-editor/atom.yml
+- import_playbook: playbooks/text-editor/sublime.yml
+- import_playbook: playbooks/text-editor/vscode.yml
+# - import_playbook: playbooks/system/open-vpn-client.yml

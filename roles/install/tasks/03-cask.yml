@@ -1,0 +1,5 @@
+- name: 'install {{ app_name }}'
+  homebrew_cask:
+    name: '{{ app_name }}'
+    state: present
+    update_homebrew: yes

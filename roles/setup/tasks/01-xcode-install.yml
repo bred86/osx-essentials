@@ -1,0 +1,9 @@
+- name: install XCode
+  command:
+    cmd: xcode-select --install
+  ignore_errors: yes
+
+- name: waiting for install to finish
+  wait_for:
+    path: /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+    delay: 10

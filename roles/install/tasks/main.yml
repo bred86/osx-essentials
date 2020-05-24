@@ -1,0 +1,23 @@
+- include_tasks: 00-prepare.yml
+  when: extension is defined and (extension == 'dmg' or extension == 'pkg')
+
+- include_tasks: 01-download.yml
+  when: extension is defined and (extension == 'dmg' or extension == 'pkg')
+
+- include_tasks: 02-mount.yml
+  when: method is defined and method == 'dmg'
+
+- include_tasks: 03-dmg.yml
+  when: extension is defined and extension == 'dmg'
+
+- include_tasks: 03-pkg.yml
+  when: extension is defined and extension == 'pkg'
+
+- include_tasks: 03-brew.yml
+  when: method is defined and method == 'brew'
+
+- include_tasks: 03-cask.yml
+  when: method is defined and method == 'cask'
+
+- include_tasks: 04-detach.yml
+  when: method is defined and method == 'dmg'

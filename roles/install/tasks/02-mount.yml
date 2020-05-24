@@ -1,0 +1,4 @@
+- name: 'mount {{ app_name }} image'
+  command:    
+    cmd: 'hdiutil attach {{ app_name }}.{{ method }} -nobrowse -mountpoint /Volumes/{{ app_name }}'
+    chdir: '~/Downloads/{{ method | upper }}'

@@ -1,0 +1,43 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'openssh'
+    method: 'brew'
+
+  pre_tasks:
+    - name: check if ssh exists
+      stat:
+        path: /usr/bin/ssh
+      register: check_ssh
+
+    - name: check if rsa key exists
+      stat:
+        path: ~/.ssh/id_rsa.macbook
+      register: check_rsa
+   
+    - name: check if ~/.ssh exists
+      stat:
+        path: ~/.ssh/
+      register: check_ssh
+    
+    - name: create ~/.ssh
+      file:
+        path: ~/.ssh
+        state: directory
+      when: check_ssh.stat.isdir == False
+
+  tasks:
+    - include_role: 
+        name: ../../roles/install
+      when: check_ssh.stat.exists == False
+
+    - name: generate RSA key pair
+      openssh_keypair:
+        path: ~/.ssh/id_rsa.macbook
+        type: rsa
+        size: 4096
+        state: present
+        force: no
+      when: check_rsa.stat.exists == False
+

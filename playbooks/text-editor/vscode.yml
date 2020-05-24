@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'visual-studio-code'
+    method: 'cask'
+  roles:
+    - ../../roles/install

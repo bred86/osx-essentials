@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: no
+  
+  tasks:
+    - name: generate RSA key pair
+      openssh_keypair:
+        path: ~/.ssh/id_rsa.macbook
+        type: rsa
+        size: 4096
+        state: present
+        force: no

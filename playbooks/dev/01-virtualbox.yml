@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  become: no
+  vars_prompt:
+    - name: password
+      prompt: 'USER password:'
+      private: yes
+  vars:
+    app_name: 'virtualbox'
+    method: 'cask'
+  roles:
+    - ../../roles/install

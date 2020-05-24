@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'OpenVPNClient'
+    app_url: 'https://openvpn.net/downloads/openvpn-connect-v2-macos.dmg'
+    method: 'dmg'
+    extension: 'pkg'
+  roles:
+    - ../../roles/install

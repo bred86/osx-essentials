@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'vagrant'
+    method: 'cask'
+  roles:
+    - ../../roles/install
+  tasks:
+    - name: install vagrant-manager
+      homebrew_cask:
+        name: 'vagrant-manager'
+        state: present
+        update_homebrew: yes
+    # - name: install vagrant-vbguest plugin
+    #   command:
+    #     cmd: vagrant plugin install vagrant-vbguest

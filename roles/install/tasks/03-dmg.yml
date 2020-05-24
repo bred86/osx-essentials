@@ -1,0 +1,7 @@
+- name: 'copy {{ app Name }} to /Applications'    
+  copy:    
+    src: '{{ item }}'    
+    dest: /Applications
+    remote_src: yes
+  with_fileglob:
+    - '/Volumes/{{ app_name }}/*.app'

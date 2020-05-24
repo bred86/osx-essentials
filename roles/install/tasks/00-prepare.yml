@@ -1,0 +1,10 @@
+- stat:
+    path: '~/Downloads/{{ method | upper }}'
+  become: no
+  register: dl_dir
+
+- file:
+    path: '~/Downloads/{{ method | upper }}'
+    state: directory
+  become: no
+  when: dl_dir.stat.exists == False

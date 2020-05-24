@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  become: no
+  vars_prompt:
+    - name: password
+      prompt: 'USER password:'
+      private: yes
+  vars:
+    app_name: 'zsh'
+    method: 'brew'
+  roles:
+    - ../../roles/install
+  tasks:
+    - name: download oh-my-zsh
+      get_url:
+        url: https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+        dest: /tmp/oh-my-zsh-install.sh
+        mode: 0755
+
+    - name: install oh-my-zsh
+      command:
+        cmd: '/bin/sh -c /tmp/oh-my-zsh-install.sh'
+      register: install_zsh
+      failed_when: (install_zsh.rc == 1) and ('You already have Oh My Zsh installed.' not in install_zsh.stdout_lines)
+
+    - name: changing zsh theme
+      lineinfile:
+        path: ~/.zshrc
+        regexp: '^ZSH_THEME="robbyrussell"'
+        line: 'ZSH_THEME="xiong-chiamiov-plus"'
+      when: install_zsh.rc == 0
+

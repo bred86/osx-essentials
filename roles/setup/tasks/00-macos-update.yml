@@ -1,0 +1,3 @@
+- name: update MacOS
+  command:
+    cmd: softwareupdate --install --all

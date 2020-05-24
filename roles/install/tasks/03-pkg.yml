@@ -1,0 +1,13 @@
+- name: 'install {{ app_name }}'
+  command:
+    cmd: 'installer -pkg {{ item }} -target /'
+  with_fileglob:
+    - '/Volumes/{{ app_name }}/*.pkg'
+  become: yes
+  when: method == 'dmg'
+
+- name: 'install {{ app_name }}'
+  command:
+    cmd: 'installer -pkg {{ app_name }}.pkg -target /'
+  become: yes
+  when: method == 'pkg'

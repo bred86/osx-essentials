@@ -1,0 +1,3 @@
+- get_url:
+    url: '{{ app_url }}'
+    dest: '~/Downloads/{{ method | upper }}/{{ app_name }}.{{ method }}'

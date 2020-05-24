@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'git'
+    method: 'brew'
+  
+  pre_tasks:
+    - name: check if git exists
+      stat:
+        path: /usr/bin/git
+      register: check_git
+  
+  tasks:
+    - include_role: 
+        name: ../../roles/install
+      when: check_git.stat.exists == False
+
+    - name: config git
+      git_config:
+        name: alias.st
+        scope: global
+        value: status
+      with_items:
+        - config: "user.name"
+          value: "{{ user_name }}"
+        - config: "user.email"
+          value: "{{ user_email }}"

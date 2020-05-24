@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'slack'
+    method: 'cask'
+  roles:
+    - ../../roles/install

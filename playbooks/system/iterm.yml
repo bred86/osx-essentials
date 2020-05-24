@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'iterm2'
+    method: 'cask'
+  roles:
+    - ../../roles/install
+

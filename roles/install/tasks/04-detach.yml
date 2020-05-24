@@ -1,0 +1,3 @@
+- name: 'detach {{ app_name }} image'
+  command:   
+    cmd: 'hdiutil detach /Volumes/{{ app_name }}/'
