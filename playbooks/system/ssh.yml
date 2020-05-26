@@ -41,3 +41,22 @@
         force: no
       when: check_rsa.stat.exists == False
 
+    - name: fix permissions
+      file:
+        path: '{{ item }}'
+        mode: '0400'
+      with_items:
+        - '~/.ssh/id_rsa.macbook'
+        - '~/.ssh/id_rsa.macbook.pub'
+
+    - name: add RSA KEY to authorized keys
+      authorized_key:
+        user: 'fferreira'
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.macbook.pub') }}"
+
+    - name: copy SSH config
+      copy:
+        src: ./files/config
+        dest: ~/.ssh
+      become: no
