@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'UgreenDriver'
+    app_url: 'https://www.ugreen.com/upload/file/1586850309.zip'
+    method: 'zip'
+    extension: 'dmg'
+  
+  pre_tasks:
+    - name: disable Gatekeepr
+      command: 
+        cmd: spctl --master-disable
+      become: yes
+
+  tasks: 
+    - include_role:
+        name: ../../roles/install
+
+  post_tasks:
+    - name: enable Gatekeepr
+      command: 
+        cmd: spctl --master-enable
+      become: yes
