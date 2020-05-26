@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'google-backup-and-sync'
+    method: 'cask'
+  roles:
+    - ../../roles/install
+

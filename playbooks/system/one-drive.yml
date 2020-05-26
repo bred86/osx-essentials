@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'onedrive'
+    method: 'cask'
+  roles:
+    - ../../roles/install
+
