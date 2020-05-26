@@ -1,0 +1,34 @@
+- stat:
+    path: '/tmp/{{ app_name }}'
+  become: no
+  register: dl_dir
+
+- file:
+    path: '/tmp/{{ app_name }}'
+    state: directory
+  become: no
+  when: dl_dir.stat.exists == False
+
+- name: 'unzip {{ app_name }}'
+  unarchive:
+    src: '~/Downloads/{{ method | upper }}/{{ app_name }}.{{ method }}'
+    dest: '/tmp/{{ app_name }}'
+    remote_src: yes
+
+- find:
+    paths: '/tmp/{{ app_name }}'
+    patterns: '*.dmg'
+    recurse: yes
+  register: zip_list
+
+- copy:
+    src: '{{ item.path }}'
+    dest: ~/Downloads/DMG/{{ app_name }}.dmg
+    remote_src: yes
+  with_items: '{{ zip_list.files }}'
+  when: zip_list.matched != 0
+
+- include_tasks: 02-mount.yml
+  vars:
+    method: "DMG"
+  when: zip_list.matched != 0

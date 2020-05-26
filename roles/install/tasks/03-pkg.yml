@@ -1,3 +1,4 @@
+# Method: DMG ###########################################
 - name: 'install {{ app_name }}'
   command:
     cmd: 'installer -pkg {{ item }} -target /'
@@ -6,8 +7,24 @@
   become: yes
   when: method == 'dmg'
 
+# Method: ZIP ###########################################
+- find:
+    paths: '/tmp/{{ app_name }}'
+    patterns: '*.pkg'
+  register: pkg_list
+  when: method == 'zip'
+
 - name: 'install {{ app_name }}'
   command:
-    cmd: 'installer -pkg {{ app_name }}.pkg -target /'
+    cmd: 'installer -pkg {{ item.path }} -target /'
+  become: yes
+  with_items: '{{ pkg_list.files }}'
+  when: method == 'zip'
+
+# Method: PKG ###########################################
+- name: 'install {{ app_name }}'
+  command:
+    cmd: 'installer -pkg ~/Downloads/{{ method | upper }}/{{ app_name }}.{{ method }} -target /'
   become: yes
   when: method == 'pkg'
+  
