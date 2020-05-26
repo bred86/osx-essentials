@@ -1,5 +1,5 @@
 # ################################################
-# this is one got to be first
+# this is one MUST be first
 #- import_playbook: playbooks/system/setup.yml
 # ################################################
 - import_playbook: playbooks/dev/00-git.yml
@@ -16,12 +16,15 @@
 - import_playbook: playbooks/messenger/zoom.yml
 
 - import_playbook: playbooks/system/1password.yml
-- import_playbook: playbooks/system/evernote.yml
+- import_playbook: playbooks/system/google-drive.yml
 - import_playbook: playbooks/system/iterm.yml
+- import_playbook: playbooks/system/one-drive.yml
 - import_playbook: playbooks/system/ssh.yml
+- import_playbook: playbooks/system/ugreen-driver.yml
 - import_playbook: playbooks/system/zsh.yml
 
 - import_playbook: playbooks/text-editor/atom.yml
+- import_playbook: playbooks/text-editor/evernote.yml
 - import_playbook: playbooks/text-editor/sublime.yml
 - import_playbook: playbooks/text-editor/vscode.yml
-# - import_playbook: playbooks/system/open-vpn-client.yml
+- import_playbook: playbooks/system/open-vpn-client.yml
