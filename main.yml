@@ -1,11 +1,14 @@
 # ################################################
 # this is one MUST be first
-#- import_playbook: playbooks/system/setup.yml
+- import_playbook: playbooks/system/setup.yml
 # ################################################
 - import_playbook: playbooks/dev/00-git.yml
 - import_playbook: playbooks/dev/01-virtualbox.yml
 - import_playbook: playbooks/dev/02-vagrant.yml
 - import_playbook: playbooks/dev/03-packer.yml
+- import_playbook: playbooks/dev/04-python3.yml
+- import_playbook: playbooks/dev/05-awscli.yml
+- import_playbook: playbooks/dev/terraform.yml
 
 - import_playbook: playbooks/internet-browser/chrome.yml
 - import_playbook: playbooks/internet-browser/firefox.yml

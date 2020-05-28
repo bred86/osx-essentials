@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  become: no
+
+  tasks:
+    - name: install awscli
+      command:
+        cmd: pip3 install awscli
+      become: yes
+
+    - name: configure awscli
+      expect:
+        command: aws configure
+        responses:
+          (.*)AWS Access Key ID(.*): '{{ aws_access_key }}'
+          (.*)AWS Secret Access Key(.*): '{{ aws_secret_access_key }}'
+          (.*)Default region name(.*): '{{ aws_region }}'
+          (.*)Default output format(.*): '{{ aws_format }}'
