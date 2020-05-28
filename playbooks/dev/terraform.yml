@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'warrensbox/tap/tfswitch'
+    method: 'brew'
+  roles:
+    - ../../roles/install
+  tasks:
+    - name: install terraform 0.12.24
+      command:
+        cmd: tfswitch 0.12.24
+

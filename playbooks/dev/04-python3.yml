@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'python3'
+    method: 'brew'
+  roles:
+    - ../../roles/install
+
