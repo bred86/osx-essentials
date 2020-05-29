@@ -5,4 +5,4 @@
       prompt: 'USER password:'
       private: yes
   roles:
-    - setup
+    - ../../roles/setup
