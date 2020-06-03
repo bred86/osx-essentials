@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'jq'
+    method: 'brew'
+  roles:
+    - ../../roles/install
+
