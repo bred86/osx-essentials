@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    app_name: 'spotify'
+    method: 'cask'
+  roles:
+    - ../../roles/install
+

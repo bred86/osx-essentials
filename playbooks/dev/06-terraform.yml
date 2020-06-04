@@ -11,3 +11,10 @@
       command:
         cmd: tfswitch 0.12.24
 
+    - include_role: 
+        name: ../../roles/install
+      vars:
+        app_name: 'terraform-inventory'
+        method: 'brew'
+
+
