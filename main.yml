@@ -24,6 +24,7 @@
 - import_playbook: playbooks/system/iterm.yml
 - import_playbook: playbooks/system/one-drive.yml
 - import_playbook: playbooks/system/rectangle.yml
+- import_playbook: playbooks/system/spotify.yml
 - import_playbook: playbooks/system/ssh.yml
 - import_playbook: playbooks/system/ugreen-driver.yml
 - import_playbook: playbooks/system/zsh.yml
