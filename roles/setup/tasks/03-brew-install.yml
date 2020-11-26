@@ -9,6 +9,6 @@
     command: '/bin/bash -c /tmp/brew-install.sh'
     responses:
       (.*)Press RETURN to continue or any other key to abort(.*): ''
-      (.*)Password(.*): '{{ password }}' 
+      (.*)Password(.*): '{{ ansible_become_pass }}' 
     timeout: null
   become: no

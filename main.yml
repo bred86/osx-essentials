@@ -1,36 +1,41 @@
-# ################################################
-# this is one MUST be first
-- import_playbook: playbooks/system/00-setup.yml
-# ################################################
-- import_playbook: playbooks/dev/00-git.yml
-- import_playbook: playbooks/dev/01-virtualbox.yml
-- import_playbook: playbooks/dev/02-vagrant.yml
-- import_playbook: playbooks/dev/03-packer.yml
-- import_playbook: playbooks/dev/04-python3.yml
-- import_playbook: playbooks/dev/05-awscli.yml
-- import_playbook: playbooks/dev/06-terraform.yml
-- import_playbook: playbooks/dev/07-jq.yml
+- hosts: localhost
+  gather_facts: yes
+  roles:
+  - role: setup
+#- import_playbook: playbooks/dev/00-git.yml
+#- import_playbook: playbooks/dev/04-python3.yml
+#- import_playbook: playbooks/dev/05-awscli.yml
+#- import_playbook: playbooks/dev/06-terraform.yml
+#- import_playbook: playbooks/dev/07-jq.yml
 
-- import_playbook: playbooks/internet-browser/chrome.yml
-- import_playbook: playbooks/internet-browser/firefox.yml
+#- import_playbook: playbooks/internet-browser/chrome.yml
+#- import_playbook: playbooks/internet-browser/firefox.yml
+#- import_playbook: playbooks/internet-browser/brave.yml
 
-- import_playbook: playbooks/messenger/slack.yml
-- import_playbook: playbooks/messenger/telegram.yml
-- import_playbook: playbooks/messenger/whatsapp.yml
-- import_playbook: playbooks/messenger/zoom.yml
+#- import_playbook: playbooks/messenger/slack.yml
+#- import_playbook: playbooks/messenger/telegram.yml
+#- import_playbook: playbooks/messenger/whatsapp.yml
+#- import_playbook: playbooks/messenger/zoom.yml
 
-- import_playbook: playbooks/system/1password.yml
-- import_playbook: playbooks/system/google-drive.yml
-- import_playbook: playbooks/system/iterm.yml
-- import_playbook: playbooks/system/one-drive.yml
-- import_playbook: playbooks/system/rectangle.yml
-- import_playbook: playbooks/system/spotify.yml
-- import_playbook: playbooks/system/ssh.yml
-- import_playbook: playbooks/system/ugreen-driver.yml
-- import_playbook: playbooks/system/zsh.yml
+#- import_playbook: playbooks/system/1password.yml
+#- import_playbook: playbooks/system/google-drive.yml
+#- import_playbook: playbooks/system/iterm.yml
+#- import_playbook: playbooks/system/one-drive.yml
+#- import_playbook: playbooks/system/rectangle.yml
+#- import_playbook: playbooks/system/spotify.yml
+#- import_playbook: playbooks/system/ssh.yml
+#- import_playbook: playbooks/system/ugreen-driver.yml
+#- import_playbook: playbooks/system/zsh.yml
 
-- import_playbook: playbooks/text-editor/atom.yml
-- import_playbook: playbooks/text-editor/evernote.yml
-- import_playbook: playbooks/text-editor/sublime.yml
-- import_playbook: playbooks/text-editor/vscode.yml
-- import_playbook: playbooks/system/open-vpn-client.yml
+#- import_playbook: playbooks/text-editor/atom.yml
+#- import_playbook: playbooks/text-editor/evernote.yml
+#- import_playbook: playbooks/text-editor/sublime.yml
+#- import_playbook: playbooks/text-editor/vscode.yml
+#- import_playbook: playbooks/system/open-vpn-client.yml
+
+#- import_playbook: playbooks/dev/01-virtualbox.yml
+#  register: virtualbox
+#- import_playbook: playbooks/dev/02-vagrant.yml
+#  when: not virtualbox.failed
+#- import_playbook: playbooks/dev/03-packer.ym
+#  when: not virtualbox.failed

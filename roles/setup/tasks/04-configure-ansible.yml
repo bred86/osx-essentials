@@ -1,0 +1,23 @@
+- name: "check {{ ansible_cfg_path }}"
+  stat: 
+    path: "{{ ansible_cfg_path }}"
+  register: ansible_cfg
+
+- name: download ansible.cfg
+  get_url:
+    url: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
+    dest: "{{ ansible_cfg_path }}"
+    mode: 0644
+  when: not ansible_cfg.stat.exists
+
+- name: configure default roles dir
+  lineinfile:
+    path: "{{ ansible_cfg_path }}"
+    regexp: '^#roles_path ='
+    line: roles_path = ~/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+
+- name: configure default output to YAML
+  lineinfile:
+    path: "{{ ansible_cfg_path }}"
+    regexp: '^#stdout_callback = yaml'
+    line: stdout_callback = yaml

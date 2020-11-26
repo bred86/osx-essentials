@@ -2,8 +2,17 @@
   command:
     cmd: xcode-select --install
   ignore_errors: yes
+  register: result
+
+- name: get latest SDK versin
+  find:
+    paths: /Library/Developer/CommandLineTools/SDKs/
+    file_type: file
+  register: sdk_v
+  when: result is not failed
 
 - name: waiting for install to finish
   wait_for:
-    path: /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk
+    path: "/Library/Developer/CommandLineTools/SDKs/{{ sdk_v.files | sort(case_sensitive=False) | last }}.sdk"
     delay: 10
+  when: result is not failed

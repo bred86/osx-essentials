@@ -2,3 +2,4 @@
 - include_tasks: 01-xcode-install.yml
 - include_tasks: 02-pexpect-install.yml
 - include_tasks: 03-brew-install.yml
+- include_tasks: 04-configure-ansible.yml
